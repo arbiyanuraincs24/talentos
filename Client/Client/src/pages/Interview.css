@@ -1,0 +1,482 @@
+.interview {
+
+    min-height:100vh;
+
+    padding:40px;
+
+    background:
+    linear-gradient(135deg,#020617,#312e81);
+
+    color:white;
+
+}
+
+
+
+/* Header */
+
+.interview-header {
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+
+
+.interview-header h1 {
+
+    font-size:45px;
+
+    background:
+    linear-gradient(90deg,#38bdf8,#a855f7);
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    color:transparent;
+
+}
+
+
+
+.interview-header p {
+
+    color:#cbd5e1;
+
+    font-size:18px;
+
+}
+
+
+
+
+
+/* Setup Box */
+
+.setup-box {
+
+    max-width:500px;
+
+    margin:auto;
+
+    padding:30px;
+
+    background:
+
+    rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:25px;
+
+    border:1px solid rgba(255,255,255,0.15);
+
+}
+
+
+
+
+
+.interview label {
+
+    display:block;
+
+    margin-top:20px;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+
+
+
+
+.interview select {
+
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    border:none;
+
+    outline:none;
+
+    background:
+
+    rgba(255,255,255,0.12);
+
+    color:white;
+
+}
+
+
+
+
+
+.interview option {
+
+    color:black;
+
+}
+
+
+
+
+
+/* Buttons */
+
+
+.interview button {
+
+
+    margin-top:25px;
+
+    padding:14px 28px;
+
+    border:none;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+
+    background:
+
+    linear-gradient(90deg,#3b82f6,#8b5cf6);
+
+
+    transition:.3s;
+
+}
+
+
+
+
+
+.interview button:hover {
+
+
+    transform:translateY(-3px);
+
+}
+
+
+
+
+
+.generate-btn {
+
+
+    display:block;
+
+    margin:35px auto;
+
+}
+
+
+
+
+
+.evaluate-btn {
+
+
+    background:
+
+    linear-gradient(90deg,#f59e0b,#ef4444);
+
+}
+
+
+
+
+
+.save-btn {
+
+
+    display:block;
+
+    margin:40px auto;
+
+    background:
+
+    linear-gradient(90deg,#10b981,#059669);
+
+}
+
+
+
+
+
+/* Progress */
+
+
+.progress {
+
+
+    width:max-content;
+
+    margin:30px auto;
+
+
+    padding:12px 25px;
+
+
+    border-radius:25px;
+
+
+    background:
+
+    rgba(255,255,255,0.1);
+
+
+    border:
+
+    1px solid rgba(255,255,255,0.2);
+
+
+}
+
+
+
+
+
+/* Questions */
+
+
+.questions {
+
+
+    max-width:1000px;
+
+    margin:40px auto;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+
+}
+
+
+
+
+
+.question-card {
+
+
+    padding:30px;
+
+
+    border-radius:25px;
+
+
+    background:
+
+    rgba(255,255,255,0.08);
+
+
+    backdrop-filter:blur(15px);
+
+
+    border:
+
+    1px solid rgba(255,255,255,0.15);
+
+
+    box-shadow:
+
+    0 10px 30px rgba(0,0,0,0.3);
+
+
+}
+
+
+
+
+
+.question-card h3 {
+
+
+    color:#38bdf8;
+
+    font-size:22px;
+
+
+}
+
+
+
+
+
+.question-card p {
+
+
+    color:#e2e8f0;
+
+
+    font-size:17px;
+
+
+    line-height:1.6;
+
+
+}
+
+
+
+
+
+/* Answer */
+
+
+.question-card textarea {
+
+
+    width:100%;
+
+
+    margin-top:20px;
+
+
+    padding:15px;
+
+
+    border-radius:15px;
+
+
+    resize:none;
+
+
+    border:none;
+
+
+    outline:none;
+
+
+    background:
+
+    rgba(255,255,255,0.12);
+
+
+    color:white;
+
+
+    font-size:16px;
+
+
+}
+
+
+
+
+
+.question-card textarea::placeholder {
+
+
+    color:#cbd5e1;
+
+
+}
+
+
+
+
+
+/* Evaluation */
+
+
+.evaluation {
+
+
+    margin-top:25px;
+
+
+    padding:20px;
+
+
+    border-radius:20px;
+
+
+    background:
+
+    rgba(16,185,129,0.15);
+
+
+    border:
+
+    1px solid rgba(16,185,129,0.3);
+
+
+}
+
+
+
+
+
+.evaluation h4 {
+
+
+    color:#34d399;
+
+
+}
+
+
+
+
+
+.evaluation p {
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+
+/* Responsive */
+
+
+@media(max-width:700px){
+
+
+    .interview {
+
+
+        padding:20px;
+
+    }
+
+
+
+    .interview-header h1 {
+
+
+        font-size:32px;
+
+    }
+
+
+}

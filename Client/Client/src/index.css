@@ -1,0 +1,25 @@
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+}
+
+
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:20px;
+  background:#111827;
+  color:white;
+}
+
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin:0 10px;
+}
+
+
+button{
+  cursor:pointer;
+}

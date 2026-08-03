@@ -1,0 +1,77 @@
+.evaluation-container {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.score-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg,#ec4899,#8b5cf6);
+
+    color: white;
+}
+
+.score-circle h1 {
+    font-size: 46px;
+    margin: 0;
+}
+
+.score-circle p {
+    margin-top: 8px;
+}
+
+.feedback-card {
+
+    background: rgba(255,255,255,.12);
+
+    backdrop-filter: blur(18px);
+
+    border:1px solid rgba(255,255,255,.2);
+
+    border-radius:18px;
+
+    padding:25px;
+
+    color:white;
+
+}
+
+.feedback-card h2{
+
+    color:#f472b6;
+
+    margin-bottom:15px;
+
+}
+
+.feedback-card ul{
+
+    padding-left:20px;
+
+}
+
+.feedback-card li{
+
+    margin-bottom:10px;
+
+    color:#fce7f3;
+
+}
+
+.feedback-card p{
+
+    color:#fce7f3;
+
+    line-height:1.7;
+
+}

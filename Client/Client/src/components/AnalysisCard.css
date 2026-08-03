@@ -1,0 +1,125 @@
+.analysis-card {
+
+
+    background: rgba(255,255,255,0.08);
+
+
+    backdrop-filter: blur(12px);
+
+
+    padding: 25px;
+
+
+    border-radius: 20px;
+
+
+    color: white;
+
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+
+    transition: 0.3s ease;
+
+
+}
+
+
+
+.analysis-card:hover {
+
+
+    transform: translateY(-5px);
+
+
+}
+
+
+
+
+
+.analysis-title {
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:12px;
+
+
+    margin-bottom:18px;
+
+
+}
+
+
+
+
+
+.analysis-title h3 {
+
+
+    font-size:20px;
+
+
+    margin:0;
+
+
+}
+
+
+
+
+
+.analysis-card ul {
+
+
+    padding-left:20px;
+
+
+    margin:0;
+
+
+}
+
+
+
+
+
+.analysis-card li {
+
+
+    margin:12px 0;
+
+
+    line-height:1.6;
+
+
+    color:rgba(255,255,255,0.9);
+
+
+}
+
+
+
+
+
+.analysis-card p {
+
+
+    line-height:1.7;
+
+
+    color:rgba(255,255,255,0.9);
+
+
+    margin:0;
+
+
+}

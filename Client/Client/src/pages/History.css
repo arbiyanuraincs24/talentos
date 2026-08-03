@@ -1,0 +1,150 @@
+.history-container{
+
+    min-height:100vh;
+
+    padding:50px;
+
+    background:
+    linear-gradient(135deg,#020617,#312e81);
+
+    color:white;
+
+}
+
+
+.history-container h1{
+
+    text-align:center;
+
+    font-size:45px;
+
+}
+
+
+
+.subtitle{
+
+    text-align:center;
+
+    color:#cbd5e1;
+
+    margin-bottom:40px;
+
+}
+
+
+
+.history-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(350px,1fr));
+
+    gap:25px;
+
+}
+
+
+
+.history-card{
+
+    background:
+    rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:25px;
+
+    padding:25px;
+
+    border:
+    1px solid rgba(255,255,255,0.15);
+
+}
+
+
+
+.card-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+
+
+.difficulty{
+
+    padding:8px 15px;
+
+    border-radius:20px;
+
+    background:#8b5cf6;
+
+}
+
+
+
+.stats{
+
+    display:flex;
+
+    gap:50px;
+
+    margin:25px 0;
+
+}
+
+
+
+.stats small{
+
+    color:#cbd5e1;
+
+}
+
+
+
+.answer-card{
+
+    margin-top:20px;
+
+    padding:15px;
+
+    background:
+    rgba(0,0,0,0.2);
+
+    border-radius:15px;
+
+}
+
+
+
+summary{
+
+    cursor:pointer;
+
+    margin-top:20px;
+
+    font-weight:bold;
+
+}
+
+
+
+.empty-card{
+
+    text-align:center;
+
+    padding:50px;
+
+    background:
+    rgba(255,255,255,0.1);
+
+    border-radius:25px;
+
+}

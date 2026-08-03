@@ -1,0 +1,84 @@
+.upload-container {
+
+    margin:40px auto;
+
+    max-width:600px;
+
+    text-align:center;
+
+}
+
+
+.upload-box {
+
+    display:block;
+
+    padding:50px;
+
+    border:2px dashed #a855f7;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    color:white;
+
+}
+
+
+.upload-box input {
+
+    display:none;
+
+}
+
+
+.file-preview {
+
+    margin-top:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:15px;
+
+    color:white;
+
+}
+
+
+.file-preview button {
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+
+.analyze-button {
+
+    margin-top:25px;
+
+    padding:14px 35px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#a855f7;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}

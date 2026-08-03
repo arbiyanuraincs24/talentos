@@ -1,0 +1,86 @@
+.resume-container {
+
+    min-height:100vh;
+
+    padding:40px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #090014,
+        #1a0538
+    );
+
+    color:white;
+
+}
+
+
+.resume-header {
+
+    text-align:center;
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+
+.resume-header h1 {
+
+    font-size:45px;
+
+    margin:20px 0;
+
+}
+
+
+.resume-header p {
+
+    color:#c8c8c8;
+
+    font-size:18px;
+
+}
+
+
+
+.analysis-section {
+
+    margin-top:40px;
+
+}
+
+
+
+.analysis-grid {
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+
+    margin-top:30px;
+
+}
+
+
+@media(max-width:600px){
+
+    .resume-container{
+
+        padding:20px;
+
+    }
+
+
+    .resume-header h1{
+
+        font-size:32px;
+
+    }
+
+}
