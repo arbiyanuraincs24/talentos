@@ -1,5 +1,11 @@
 const pdfParse = require("pdf-parse");
-const axios = require("axios");
+const { GoogleGenAI } = require("@google/genai");
+
+
+const ai = new GoogleGenAI({
+    apiKey: process.env.GEMINI_API_KEY
+});
+
 
 
 const analyzeResume = async (req, res) => {
@@ -19,11 +25,12 @@ const analyzeResume = async (req, res) => {
         }
 
 
-        if (!process.env.OPENROUTER_API_KEY) {
+
+        if (!process.env.GEMINI_API_KEY) {
 
             return res.status(500).json({
                 success: false,
-                message: "OpenRouter API key missing"
+                message: "Gemini API key missing"
             });
 
         }
@@ -38,6 +45,7 @@ const analyzeResume = async (req, res) => {
 
 
         const resumeText = pdfData.text;
+
 
 
         console.log(
@@ -75,7 +83,7 @@ Do not use code blocks.
 Do not add explanations.
 
 
-Return exactly this format:
+Return exactly:
 
 {
   "atsScore": 0,
@@ -100,7 +108,7 @@ Rules:
 - missingKeywords should contain ATS keywords.
 - grammarIssues should contain writing issues.
 - projectImprovements should contain suggestions.
-- recommendedRoles should contain suitable roles.
+- recommendedRoles should contain suitable jobs.
 
 
 Resume:
@@ -111,82 +119,33 @@ ${resumeText}
 
 
 
+
         console.log(
-            "Sending request to OpenRouter..."
+            "Sending request to Gemini..."
         );
 
 
 
-        const response = await axios.post(
+        const response = await ai.models.generateContent({
 
-            "https://openrouter.ai/api/v1/chat/completions",
+            model: "gemini-2.5-flash",
 
-            {
+            contents: prompt,
 
-                model:
-                 "meta-llama/llama-3.1-8b-instruct",
-
-
-                messages: [
-
-                    {
-
-                        role: "system",
-
-                        content:
-                        "Return only valid JSON. No markdown. No extra text."
-
-                    },
-
-
-                    {
-
-                        role: "user",
-
-                        content: prompt
-
-                    }
-
-                ],
-
+            config: {
 
                 temperature: 0,
 
-
-                max_tokens: 800
-
-            },
-
-
-            {
-
-                headers: {
-
-                    Authorization:
-                    `Bearer ${process.env.OPENROUTER_API_KEY}`,
-
-
-                    "Content-Type":
-                    "application/json",
-
-
-                    "HTTP-Referer":
-                    "https://talentos62410-8t5v7bpjk-arbi1024.vercel.app",
-
-
-                    "X-Title":
-                    "TalentOS Resume Analyzer"
-
-                }
+                responseMimeType: "application/json"
 
             }
 
-        );
+        });
 
 
 
-        let aiResponse =
-        response.data?.choices?.[0]?.message?.content;
+
+        let aiResponse = response.text;
 
 
 
@@ -212,7 +171,7 @@ ${resumeText}
 
 
 
-        // Clean AI response
+        // Clean response
 
         aiResponse = aiResponse
 
@@ -225,8 +184,6 @@ ${resumeText}
 
 
 
-
-        // Extract JSON
 
         const start =
         aiResponse.indexOf("{");
@@ -263,7 +220,6 @@ ${resumeText}
 
         try {
 
-
             analysis = JSON.parse(
                 aiResponse
             );
@@ -289,6 +245,7 @@ ${resumeText}
                 raw: aiResponse
 
             });
+
 
         }
 
@@ -323,14 +280,8 @@ ${resumeText}
 
 
         console.log(
-            "STATUS:",
-            error.response?.status
-        );
-
-
-        console.log(
-            "DATA:",
-            error.response?.data
+            "ERROR:",
+            error
         );
 
 
@@ -341,10 +292,10 @@ ${resumeText}
 
             message:"Resume analysis failed",
 
-            error:
-            error.response?.data || error.message
+            error:error.message
 
         });
+
 
     }
 
@@ -352,6 +303,9 @@ ${resumeText}
 
 
 
+
 module.exports = {
+
     analyzeResume
+
 };
