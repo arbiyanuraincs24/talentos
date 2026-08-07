@@ -1,13 +1,5 @@
 const pdfParse = require("pdf-parse");
-const { GoogleGenAI } = require("@google/genai");
-
-
-const ai = new GoogleGenAI({
-    apiKey: process.env.GEMINI_API_KEY
-});
-
-
-
+const axios = require("axios")
 const analyzeResume = async (req, res) => {
 
     try {
@@ -26,15 +18,14 @@ const analyzeResume = async (req, res) => {
 
 
 
-        if (!process.env.GEMINI_API_KEY) {
+        if (!process.env.OPENROUTER_API_KEY) {
 
-            return res.status(500).json({
-                success: false,
-                message: "Gemini API key missing"
-            });
+    return res.status(500).json({
+        success: false,
+        message: "OpenRouter API key missing"
+    });
 
-        }
-
+}
 
 
         // Extract PDF Text
@@ -121,31 +112,59 @@ ${resumeText}
 
 
         console.log(
-            "Sending request to Gemini..."
+            "Sending request to OpenRouter..."
         );
 
 
 
-        const response = await ai.models.generateContent({
+        const response = await axios.post(
 
-            model: "gemini-2.0-flash",
+    "https://openrouter.ai/api/v1/chat/completions",
 
-            contents: prompt,
+    {
+        model: "openrouter/free",
 
-            config: {
-
-                temperature: 0,
-
-                responseMimeType: "application/json"
-
+        messages: [
+            {
+                role: "system",
+                content: "You are an ATS Resume Analyzer. Return ONLY valid JSON."
+            },
+            {
+                role: "user",
+                content: prompt
             }
+        ],
 
-        });
+        temperature: 0,
+
+        max_tokens: 2000
+    },
+
+    {
+        headers: {
+
+            Authorization:
+            `Bearer ${process.env.OPENROUTER_API_KEY}`,
+
+            "Content-Type":
+            "application/json",
+
+            "HTTP-Referer":
+            "https://talentosarbi.vercel.app",
+
+            "X-Title":
+            "TalentOS Resume Analyzer"
+
+        }
+    }
+
+);
 
 
 
 
-        let aiResponse = response.text;
+        let aiResponse =
+response.data.choices[0].message.content;
 
 
 
@@ -227,27 +246,41 @@ ${resumeText}
 
         }
 
-        catch(error) {
+        
 
 
-            console.log(
-                "JSON PARSE ERROR:",
-                error.message
-            );
+catch(error) {
 
 
-            return res.status(500).json({
-
-                success:false,
-
-                message:"AI returned invalid JSON",
-
-                raw: aiResponse
-
-            });
+    console.log(
+        "===== RESUME ERROR ====="
+    );
 
 
-        }
+    console.log(
+        "MESSAGE:",
+        error.message
+    );
+
+
+    console.log(
+        "RESPONSE:",
+        error.response?.data
+    );
+
+
+    return res.status(500).json({
+
+        success:false,
+
+        message:"Resume analysis failed",
+
+        error:error.response?.data || error.message
+
+    });
+
+
+}
 
 
 
@@ -286,15 +319,7 @@ ${resumeText}
 
 
 
-        return res.status(500).json({
-
-            success:false,
-
-            message:"Resume analysis failed",
-
-            error:error.message
-
-        });
+        
 
 
     }
